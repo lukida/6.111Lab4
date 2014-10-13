@@ -1,0 +1,442 @@
+# //  ModelSim SE 6.4a Aug 28 2008 Linux 3.2.0-70-generic
+# //
+# //  Copyright 1991-2008 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# do {FSMTest5.fdo} 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module FSM
+# 
+# Top level modules:
+# 	FSM
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module FSMTest5
+# 
+# Top level modules:
+# 	FSMTest5
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps FSMTest5 glbl 
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: jdesa  Hostname: eecs-digital-11  ProcessID: 23980
+#           Attempting to use alternate WLF file "./wlftHfGIgN".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftHfGIgN
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftHfGIgN
+# Design is being optimized due to module recompilation...
+# Loading work.FSMTest5(fast)
+# Loading work.FSM(fast)
+# Loading work.glbl(fast)
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+# command is: 
+#  5
+# state is:
+#  0
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6
+# command is: 
+#  5
+# state is:
+#  6

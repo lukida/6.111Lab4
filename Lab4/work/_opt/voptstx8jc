@@ -1,0 +1,123 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/afs/athena.mit.edu/user/j/d/jdesa/6.111work/Labs/Lab4/Lab4
+T_opt
+Z1 VULgmEYW5n5???THzlT?`N2
+Z2 04 3 4 work FSM fast 0
+Z3 04 4 4 work glbl fast 0
+Z4 =1-f04da20f05e9-543c11b7-1db68-5e29
+Z5 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
+Z6 OE;O;6.4a;39
+T_opt1
+Z7 V8BlfF;ezd:j@f9NiA@>Bd0
+Z8 04 8 4 work FSMTest5 fast 0
+R3
+Z9 =1-f04da20f05e9-543c10bd-72eed-5e12
+R5
+R6
+T_opt2
+Z10 V:0h1On`>clI0LAM98Jozk3
+Z11 04 8 4 work FSMTest4 fast 0
+R3
+Z12 =1-f04da20f05e9-543c1009-72ebf-5dac
+R5
+R6
+vFSM
+Z13 Icc<kY0510SYHXTD;WmdiH1
+Z14 V_1JSda7CRl^45Z;^6]I]b2
+Z15 w1413222834
+Z16 8FSM.v
+Z17 FFSM.v
+L0 3
+Z18 OE;L;6.4a;39
+r1
+31
+Z19 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z20 n@f@s@m
+Z21 !s100 mThZjho=UiGF]el?fNf0b2
+!s85 0
+vFSMTest
+Z22 I7Tz1IX3XV7?KlK6FUAWN40
+Z23 VX7UJX[cO_11K_Ck5J]L133
+Z24 w1412732003
+Z25 8FSMTest.v
+Z26 FFSMTest.v
+L0 25
+R18
+r1
+31
+R19
+Z27 n@f@s@m@test
+Z28 !s100 mR_[Al63J5<j]iBL18R6K2
+!s85 0
+vFSMTest2
+Z29 IB6cfPRW7`71d0LRO1jX7Z1
+Z30 V_Dc7>Y>A5RK_VXbQOW=O]1
+Z31 w1413221645
+Z32 8FSMTest2.v
+Z33 FFSMTest2.v
+L0 3
+R18
+r1
+31
+R19
+Z34 n@f@s@m@test2
+Z35 !s100 HnRS<e?fjVgEVCmJ6PUNM1
+!s85 0
+vFSMTest3
+Z36 I7N4B_cenGL4k8]Z8N[EzP0
+Z37 VMK>h7PHJmME>0DemHWa]=0
+Z38 w1413221242
+Z39 8FSMTest3.v
+Z40 FFSMTest3.v
+L0 3
+R18
+r1
+31
+R19
+Z41 n@f@s@m@test3
+Z42 !s100 @Dz_o0cU>30UZ2P_Lz`]B2
+!s85 0
+vFSMTest4
+Z43 Io=mR3>E1c7mMlN_X_oOod1
+Z44 VQd18?k_n@LNYD:DgUEYAh1
+Z45 w1413221714
+Z46 8FSMTest4.v
+Z47 FFSMTest4.v
+L0 3
+R18
+r1
+31
+R19
+Z48 n@f@s@m@test4
+Z49 !s100 E>dOmbK5M17R4A:N7kzES1
+!s85 0
+vFSMTest5
+Z50 Ia<n@SAZY];T26CHVGRB1^1
+Z51 V>6f2f0c1COSYe?FbU^Jjz1
+Z52 w1413222575
+Z53 8FSMTest5.v
+Z54 FFSMTest5.v
+L0 3
+R18
+r1
+31
+R19
+Z55 n@f@s@m@test5
+Z56 !s100 cD>_L5WfKM<<Jz1;8lJX60
+!s85 0
+vglbl
+Z57 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z58 VnN]4Gon>inod6>M^M2[SV1
+Z59 w1202685744
+Z60 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z61 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+L0 5
+R18
+r1
+31
+R19
+Z62 !s100 T?5S;>bN`@zG_25]R_4A33
+!s85 0
