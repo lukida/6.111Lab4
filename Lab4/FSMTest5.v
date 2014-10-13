@@ -43,7 +43,7 @@ module FSMTest5;
 		clock = 0;
 		passengerdoor = 0;
 		driverdoor = 0;
-		ignition = 0;
+		ignition = 1;
 		hidden = 0;
 		brakepedal = 0;
 		timer_status = 0;

@@ -8,6 +8,11 @@ module Divider(
 
 	reg [24:0] clock_counter;
 	
+	initial begin
+		clock_counter = 0;
+	end
+	
+	
 	always @(posedge clock) begin
 		clock_counter <= clock_counter + 1;
 	end

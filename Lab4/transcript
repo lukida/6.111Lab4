@@ -8,7 +8,7 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# do {FSMTest5.fdo} 
+# do {FSMTest6.fdo} 
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
 # -- Compiling module FSM
@@ -16,427 +16,227 @@
 # Top level modules:
 # 	FSM
 # Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
-# -- Compiling module FSMTest5
+# -- Compiling module FSMTest6
 # 
 # Top level modules:
-# 	FSMTest5
+# 	FSMTest6
 # Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
 # -- Compiling module glbl
 # 
 # Top level modules:
 # 	glbl
-# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps FSMTest5 glbl 
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps FSMTest6 glbl 
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: jdesa  Hostname: eecs-digital-11  ProcessID: 23980
-#           Attempting to use alternate WLF file "./wlftHfGIgN".
+#           File in use by: jdesa  Hostname: eecs-digital-11  ProcessID: 25504
+#           Attempting to use alternate WLF file "./wlft82igtO".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftHfGIgN
+#           Using alternate file: ./wlft82igtO
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftHfGIgN
+#           Using alternate file: ./wlft82igtO
 # Design is being optimized due to module recompilation...
-# Loading work.FSMTest5(fast)
+# Loading work.FSMTest6(fast)
 # Loading work.FSM(fast)
 # Loading work.glbl(fast)
 # .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
 # .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
 # .main_pane.signals.interior.cs
-# command is: 
-#  5
-# state is:
-#  0
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
-# command is: 
-#  5
-# state is:
-#  6
+#  8
+# case1
+#  8
+# case1
+#  8
+# case1
+#  8
+# case1
+#  8
+# case1
+#  8
+# case1
+#  8
+# case1
+#  8
+# case1
+#  8
+# case1
+#  8
+# case1
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2
+# 16
+# case2

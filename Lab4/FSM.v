@@ -9,61 +9,59 @@ module FSM(
     input brakepedal,
 	 input timer_status,
 	 input reset,
-    output fuelpump,
-    output status,
-    output siren,
 	 output reg [3:0]state
     );
 	 
 	 //List of States
 	 parameter armed = 0;
-	 parameter wait1 = 1;
+	 parameter wait1 = 1; //t_arm_delay
 	 parameter siren_state = 2;
 	 parameter disarm = 3;
 	 parameter timer = 4;
 	 parameter timer_expired = 5;
     parameter unknown = 6;
 	 
-	 wire [5:0]command = {passengerdoor, driverdoor, ignition, hidden, brakepedal, timer_expired};
+	 wire [5:0]command = {passengerdoor, driverdoor, ignition, hidden, brakepedal, timer_status};
 
 	 initial begin
 	 	state = armed;
 	 end
 	 
-	 always @ (posedge clock) begin
-	  $display ("command is: ");
-	  $display(command);
-	  $display("state is:");
-	  $display(state);
-		casez (command) 
-			'bzz1zzz:  state <= disarm;
-			'bzz0zzz: begin
+	 always @ (posedge clock) begin  
+	   $display(command);
+		casex (command) 
+			'bxx1xxx:  begin
+				$display("case1");
+				state <= disarm;
+			end
+			'bxx0xxx: begin
+				$display("case2");
 				case(state) 
+					armed: $display("armed and in case2");
 					disarm: state <= wait1; //with driver time wait
-					default: state <= unknown;
 				endcase
 			end
-			'b1z0zzz: begin //passenger door open, ignition off
+			'b1x0xxx: begin //passenger door open, ignition off
+				$display("case3");
 				case (state) 
 					disarm: state <= wait1; //wait time is passenger time
-					default: state <= unknown;
 				endcase
 			end
-			'bz0zzzz:  begin //driver door open, nothing else matters
-				case (state) 
+			'bx0xxxx:  begin //driver door open, nothing else matters
+				$display("case4");
+				case (state)
 					wait1: state <= timer;
-					default: state<= unknown;
 				endcase 
 			end
-			'bzzzzz1: begin
+			'bxxxxx1: begin
+				$display("case5");
 				case (state) 
-					wait1: state <= siren;
+					wait1: state <= siren_state;
 					siren_state: state <= armed;
-					default: state <= unknown;
 				endcase				
 			end 
 			default: begin
-			$display("ended up in main default case");
+			$display("main case statement");
 			state <= unknown;
 			end
 		endcase
@@ -74,8 +72,6 @@ module FSM(
 			state = armed;
 		end
 	 end
-	 
-	 assign test_state = state;
 	 
 endmodule
 	
