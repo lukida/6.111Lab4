@@ -270,16 +270,16 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // mouse_clock, mouse_data, keyboard_clock, and keyboard_data are inputs
 
    // LED Displays
-   assign disp_blank = 1'b1;
-   assign disp_clock = 1'b0;
-   assign disp_rs = 1'b0;
-   assign disp_ce_b = 1'b1;
-   assign disp_reset_b = 1'b0;
-   assign disp_data_out = 1'b0;
+   //assign disp_blank = 1'b1;
+   //assign disp_clock = 1'b0;
+	// assign disp_rs = 1'b0;
+	// assign disp_ce_b = 1'b1;
+	// assign disp_reset_b = 1'b0;
+	// assign disp_data_out = 1'b0;
    // disp_data_in is an input
 
    // Buttons, Switches, and Individual LEDs
-   assign led = 8'hFF;
+   //assign led = 8'hFF;
    // button0, button1, button2, button3, button_enter, button_right,
    // button_left, button_down, button_up, and switches are inputs
 
@@ -323,6 +323,57 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
   SRL16 reset_sr(.D(1'b0), .CLK(clock_27mhz), .Q(reset),
 	         .A0(1'b1), .A1(1'b1), .A2(1'b1), .A3(1'b1));
   defparam reset_sr.INIT = 16'hFFFF;
+  
+  //declare wires as shown in Figure 2 to connect the submodules:
+	wire reset_sync;    
+	wire one_hz_enable;
+	wire [3:0] value;
+	wire expired, start_timer; 
+	
+	//My Lab 4 Switch Mapping
+	//Debouncing
+	wire button_down_clean;
+	wire FSM_reset = button_down_clean;
+	debounce debouncer1(.reset(reset), .clock(clock27mHz), .noisy(button_down), .clean(button_down_clean));
+	wire button_enter_clean;
+	wire reprogram = button_enter_clean;
+	debounce debouncer1(.reset(reset), .clock(clock27mHz), .noisy(button_enter), .clean(button_enter_clean));
+	wire button3_clean;
+	wire passenger_door = button3_clean;
+	debounce debouncer2(.reset(reset), .clock(clock27mHz), .noisy(button3), .clean(button3_clean));
+	wire button2_clean;
+	wire driver_door = button2_clean;
+	debounce debouncer3(.reset(reset), .clock(clock27mHz), .noisy(button2), .clean(button2_clean));
+	wire button1_clean;
+	wire brake_pedal = button1_clean;
+	debounce debouncer4(.reset(reset), .clock(clock27mHz), .noisy(button1), .clean(button1_clean));
+	wire button0_clean;
+	wire hidden = button0_clean;
+	debounce debouncer5(.reset(reset), .clock(clock27mHz), .noisy(button0), .clean(button0_clean));
+	
+   wire led = {'b000000, 'b0, 'b1}; //replace this with status
+	
+	wire ignition = switch[7];
+	wire TIME_PARAM = switch[5:4]; //make sure this is the right variable name
+	wire TIME_VALUE = switch[3:0]; //make sure this is the right variable name
+	
+	//instantiate the submodules and wire their inputs and outputs
+	//(use the labkit's clock_27mhz as the clock to all blocks)	
+	
+	FSM(.clock(clock_27mhz), .passengerdoor(passenger_door), .driverdoor(driver_door), .ignition(ignition), .hidden(hidden), .brakepedal(brake_pedal), .timer_status(timer_status), .reset(FSM_reset));
+	//need to initialize timer_status (whether expired or not) in here
 
+	Divider(.clock(clock_27mhz), .start_timer(start_timer), .one_hz_enable(one_hz_enable));
+	
+	Timer(.Start_Timer(start_timer), .Timer_Length(Timer_Length), .one_hz_enable(one_hz_enable), .Expired(expired));
+	
+	FuelPump(.clock(clock_27mhz), .passengerdoor(passenger_door), .driverdoor(driver_door),
+	.ignition(ignition), .hidden(hidden), .brakepedal(brake_pedal), 
+	.timer_status(timer_status), .reset(FSM_reset));
+	
+	display_16hex(.reset(FSM_reset), .clock_27mhz(clock_27mhz), .data(),
+		disp_blank(disp_blank), disp_clock(disp_clock), disp_rs(disp_rs), disp_ce_b(disp_ce_b),
+		disp_reset_b(disp_reset_b), disp_data_out(disp_data_out));
+		
 
 endmodule

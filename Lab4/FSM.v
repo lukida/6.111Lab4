@@ -8,8 +8,8 @@ module FSM(
     input hidden,
     input brakepedal,
 	 input timer_status,
-	 input reset,
-	 output reg [3:0]state
+	 input reset
+	 //output reg [3:0]state
     );
 	 
 	 //List of States
@@ -22,6 +22,8 @@ module FSM(
     parameter unknown = 6;
 	 
 	 wire [5:0]command = {passengerdoor, driverdoor, ignition, hidden, brakepedal, timer_status};
+
+	 reg [3:0]state;
 
 	 initial begin
 	 	state = armed;

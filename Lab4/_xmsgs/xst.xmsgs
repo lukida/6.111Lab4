@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="error" file="HDLCompilers" num="27" delta="unknown" ><arg fmt="%s" index="1">&quot;../labkit.v&quot; line 340 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">debouncer1</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="unknown" >&quot;<arg fmt="%s" index="1">../labkit.v</arg>&quot; line <arg fmt="%d" index="2">375</arg> <arg fmt="%s" index="3">expecting &apos;.&apos;, found &apos;disp_blank&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="27" delta="unknown" ><arg fmt="%s" index="1">&quot;../labkit.v&quot; line 375 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">disp_clock</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="27" delta="unknown" ><arg fmt="%s" index="1">&quot;../labkit.v&quot; line 375 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">disp_rs</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="27" delta="unknown" ><arg fmt="%s" index="1">&quot;../labkit.v&quot; line 375 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">disp_ce_b</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="27" delta="unknown" ><arg fmt="%s" index="1">&quot;../labkit.v&quot; line 376 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">disp_reset_b</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="27" delta="unknown" ><arg fmt="%s" index="1">&quot;../labkit.v&quot; line 376 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">disp_data_out</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="unknown" >&quot;<arg fmt="%s" index="1">../labkit.v</arg>&quot; line <arg fmt="%d" index="2">376</arg> <arg fmt="%s" index="3">expecting &apos;;&apos;, found &apos;)&apos;</arg>
+</msg>
+
+</messages>
+

@@ -1,0 +1,2 @@
+verilog work "../debounce.v"
+verilog work "../labkit.v"
