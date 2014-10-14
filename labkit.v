@@ -63,77 +63,77 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
-	       ac97_bit_clock,
-	       
-	       vga_out_red, vga_out_green, vga_out_blue, vga_out_sync_b,
-	       vga_out_blank_b, vga_out_pixel_clock, vga_out_hsync,
-	       vga_out_vsync,
+          ac97_bit_clock,
+          
+          vga_out_red, vga_out_green, vga_out_blue, vga_out_sync_b,
+          vga_out_blank_b, vga_out_pixel_clock, vga_out_hsync,
+          vga_out_vsync,
 
-	       tv_out_ycrcb, tv_out_reset_b, tv_out_clock, tv_out_i2c_clock,
-	       tv_out_i2c_data, tv_out_pal_ntsc, tv_out_hsync_b,
-	       tv_out_vsync_b, tv_out_blank_b, tv_out_subcar_reset,
+          tv_out_ycrcb, tv_out_reset_b, tv_out_clock, tv_out_i2c_clock,
+          tv_out_i2c_data, tv_out_pal_ntsc, tv_out_hsync_b,
+          tv_out_vsync_b, tv_out_blank_b, tv_out_subcar_reset,
 
-	       tv_in_ycrcb, tv_in_data_valid, tv_in_line_clock1,
-	       tv_in_line_clock2, tv_in_aef, tv_in_hff, tv_in_aff,
-	       tv_in_i2c_clock, tv_in_i2c_data, tv_in_fifo_read,
-	       tv_in_fifo_clock, tv_in_iso, tv_in_reset_b, tv_in_clock,
+          tv_in_ycrcb, tv_in_data_valid, tv_in_line_clock1,
+          tv_in_line_clock2, tv_in_aef, tv_in_hff, tv_in_aff,
+          tv_in_i2c_clock, tv_in_i2c_data, tv_in_fifo_read,
+          tv_in_fifo_clock, tv_in_iso, tv_in_reset_b, tv_in_clock,
 
-	       ram0_data, ram0_address, ram0_adv_ld, ram0_clk, ram0_cen_b,
-	       ram0_ce_b, ram0_oe_b, ram0_we_b, ram0_bwe_b, 
+          ram0_data, ram0_address, ram0_adv_ld, ram0_clk, ram0_cen_b,
+          ram0_ce_b, ram0_oe_b, ram0_we_b, ram0_bwe_b, 
 
-	       ram1_data, ram1_address, ram1_adv_ld, ram1_clk, ram1_cen_b,
-	       ram1_ce_b, ram1_oe_b, ram1_we_b, ram1_bwe_b,
+          ram1_data, ram1_address, ram1_adv_ld, ram1_clk, ram1_cen_b,
+          ram1_ce_b, ram1_oe_b, ram1_we_b, ram1_bwe_b,
 
-	       clock_feedback_out, clock_feedback_in,
+          clock_feedback_out, clock_feedback_in,
 
-	       flash_data, flash_address, flash_ce_b, flash_oe_b, flash_we_b,
-	       flash_reset_b, flash_sts, flash_byte_b,
+          flash_data, flash_address, flash_ce_b, flash_oe_b, flash_we_b,
+          flash_reset_b, flash_sts, flash_byte_b,
 
-	       rs232_txd, rs232_rxd, rs232_rts, rs232_cts,
+          rs232_txd, rs232_rxd, rs232_rts, rs232_cts,
 
-	       mouse_clock, mouse_data, keyboard_clock, keyboard_data,
+          mouse_clock, mouse_data, keyboard_clock, keyboard_data,
 
-	       clock_27mhz, clock1, clock2,
+          clock_27mhz, clock1, clock2,
 
-	       disp_blank, disp_data_out, disp_clock, disp_rs, disp_ce_b,
-	       disp_reset_b, disp_data_in,
+          disp_blank, disp_data_out, disp_clock, disp_rs, disp_ce_b,
+          disp_reset_b, disp_data_in,
 
-	       button0, button1, button2, button3, button_enter, button_right,
-	       button_left, button_down, button_up,
+          button0, button1, button2, button3, button_enter, button_right,
+          button_left, button_down, button_up,
 
-	       switch,
+          switch,
 
-	       led,
-	       
-	       user1, user2, user3, user4,
-	       
-	       daughtercard,
+          led,
+          
+          user1, user2, user3, user4,
+          
+          daughtercard,
 
-	       systemace_data, systemace_address, systemace_ce_b,
-	       systemace_we_b, systemace_oe_b, systemace_irq, systemace_mpbrdy,
-	       
-	       analyzer1_data, analyzer1_clock,
- 	       analyzer2_data, analyzer2_clock,
- 	       analyzer3_data, analyzer3_clock,
- 	       analyzer4_data, analyzer4_clock);
+          systemace_data, systemace_address, systemace_ce_b,
+          systemace_we_b, systemace_oe_b, systemace_irq, systemace_mpbrdy,
+          
+          analyzer1_data, analyzer1_clock,
+          analyzer2_data, analyzer2_clock,
+          analyzer3_data, analyzer3_clock,
+          analyzer4_data, analyzer4_clock);
 
    output beep, audio_reset_b, ac97_synch, ac97_sdata_out;
    input  ac97_bit_clock, ac97_sdata_in;
    
    output [7:0] vga_out_red, vga_out_green, vga_out_blue;
    output vga_out_sync_b, vga_out_blank_b, vga_out_pixel_clock,
-	  vga_out_hsync, vga_out_vsync;
+     vga_out_hsync, vga_out_vsync;
 
    output [9:0] tv_out_ycrcb;
    output tv_out_reset_b, tv_out_clock, tv_out_i2c_clock, tv_out_i2c_data,
-	  tv_out_pal_ntsc, tv_out_hsync_b, tv_out_vsync_b, tv_out_blank_b,
-	  tv_out_subcar_reset;
+     tv_out_pal_ntsc, tv_out_hsync_b, tv_out_vsync_b, tv_out_blank_b,
+     tv_out_subcar_reset;
    
    input  [19:0] tv_in_ycrcb;
    input  tv_in_data_valid, tv_in_line_clock1, tv_in_line_clock2, tv_in_aef,
-	  tv_in_hff, tv_in_aff;
+     tv_in_hff, tv_in_aff;
    output tv_in_i2c_clock, tv_in_fifo_read, tv_in_fifo_clock, tv_in_iso,
-	  tv_in_reset_b, tv_in_clock;
+     tv_in_reset_b, tv_in_clock;
    inout  tv_in_i2c_data;
         
    inout  [35:0] ram0_data;
@@ -166,7 +166,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    output  disp_data_out;
    
    input  button0, button1, button2, button3, button_enter, button_right,
-	  button_left, button_down, button_up;
+     button_left, button_down, button_up;
    input  [7:0] switch;
    output [7:0] led;
 
@@ -180,7 +180,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    input  systemace_irq, systemace_mpbrdy;
 
    output [15:0] analyzer1_data, analyzer2_data, analyzer3_data, 
-		 analyzer4_data;
+       analyzer4_data;
    output analyzer1_clock, analyzer2_clock, analyzer3_clock, analyzer4_clock;
 
    ////////////////////////////////////////////////////////////////////////////
@@ -272,10 +272,10 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // LED Displays
    //assign disp_blank = 1'b1;
    //assign disp_clock = 1'b0;
-	// assign disp_rs = 1'b0;
-	// assign disp_ce_b = 1'b1;
-	// assign disp_reset_b = 1'b0;
-	// assign disp_data_out = 1'b0;
+   // assign disp_rs = 1'b0;
+   // assign disp_ce_b = 1'b1;
+   // assign disp_reset_b = 1'b0;
+   // assign disp_data_out = 1'b0;
    // disp_data_in is an input
 
    // Buttons, Switches, and Individual LEDs
@@ -309,7 +309,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    assign analyzer3_clock = 1'b1;
    assign analyzer4_data = 16'h0;
    assign analyzer4_clock = 1'b1;
-			    
+             
 ////////////////////////////////////////////////////////////////////////////
   //
   // Reset Generation
@@ -321,89 +321,100 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
   ////////////////////////////////////////////////////////////////////////////
 
 
-	/////////////////////////
-	///// LAB 4
-	///////////////////////
+   /////////////////////////
+   ///// LAB 4
+   ///////////////////////
 
-	wire reset;
-	SRL16 reset_sr(.D(1'b0), .CLK(clock_27mhz), .Q(reset),
-					.A0(1'b1), .A1(1'b1), .A2(1'b1), .A3(1'b1));
-	defparam reset_sr.INIT = 16'hFFFF;
-		
+   ////////RESET/////////
 
-	/////////////////////////
-	// DEBOUNCING BUTTONS
-	////////////////////////
-	wire FSM_reset;
-	debounce d_FSM_reset(.reset(reset), .clock(clock27mHz), .noisy(~button_down), .clean(FSM_reset));
-	
-	wire reprogram;
-	debounce d_reprogram(.reset(reset), .clock(clock27mHz), .noisy(~button_enter), .clean(reprogram));
-	wire passenger_door;
-	debounce d_passenger_door(.reset(reset), .clock(clock27mHz), .noisy(~button3), .clean(passenger_door));
-	wire driver_door;
-	debounce d_driver_door(.reset(reset), .clock(clock27mHz), .noisy(~button2), .clean(driver_door));
-	wire break_pedal;
-	debounce d_brake_pedal(.reset(reset), .clock(clock27mHz), .noisy(~button1), .clean(brake_pedal));
-	wire hiden;
-	debounce d_hidden(.reset(reset), .clock(clock27mHz), .noisy(~button0), .clean(hidden));
-	
-	///////////////////////
-	// DEBOUNCING SWITCHES
-	///////////////////////
-	wire ignition;
-	debounce d_ignition(.reset(reset), .clock(clock27mHz), .noisy(switch[7]), .clean(ignition));
-	wire [3:0] time_value;
-	debounce d_time_value_0(.reset(reset), .clock(clock27mHz), .noisy(switch[0]), .clean(time_value[0]));
-	debounce d_time_value_1(.reset(reset), .clock(clock27mHz), .noisy(switch[1]), .clean(time_value[1]));
-	debounce d_time_value_2(.reset(reset), .clock(clock27mHz), .noisy(switch[2]), .clean(time_value[2]));
-	debounce d_time_value_3(.reset(reset), .clock(clock27mHz), .noisy(switch[3]), .clean(time_value[3]));
-	wire [1:0] time_parameter;
-	debounce d_time_parameter_0(.reset(reset), .clock(clock27mHz), .noisy(switch[4]), .clean(time_parameter[0]));
-	debounce d_time_parameter_1(.reset(reset), .clock(clock27mHz), .noisy(switch[5]), .clean(time_parameter[1]));
-		
-	wire led = {FSM_reset, reprogram, passenger_door, driver_door, brake_pedal, hidden}; //replace this with status
+   wire FPGA_reset;
+   SRL16 reset_sr(.D(1'b0), .CLK(clock_27mhz), .Q(FPGA_reset),
+               .A0(1'b1), .A1(1'b1), .A2(1'b1), .A3(1'b1));
+   defparam reset_sr.INIT = 16'hFFFF;
 
-	wire [3:0] state_copy;
-	wire [3:0] timer_copy;
-	
-	FSM fsm(.clock(clock_27mhz), .passengerdoor(passenger_door), .driverdoor(driver_door), .ignition(ignition), .hidden(hidden), .brakepedal(brake_pedal), .timer_status(timer_status), .reset(FSM_reset), .state(state_copy));
-	Divider divider(.clock(clock_27mhz), .start_timer(start_timer), .one_hz_enable(one_hz_enable));	
-	Timer timer(.Start_Timer(start_timer), .Timer_Length(Timer_Length), .one_hz_enable(one_hz_enable), .Expired(expired), .Timer_Length_Copy(timer_copy));
-	FuelPump fuelpump(.clock(clock_27mhz), .passengerdoor(passenger_door), .driverdoor(driver_door), 
-	.ignition(ignition), .hidden(hidden), .brakepedal(brakepedal),
-	.timer_status(timer_status), .fuelpump(fuel_pump), .status(status), .siren(siren));
-	
-	//{4'hA,1'b0,state,4'hB, 4'b0, 4'hC, 1'b0, Timer_Length_Copy, 4'hD, 4'b0};
+   wire FSM_reset;
+   debounce d_FSM_reset(.reset(reset), .clock(clock27mHz), .noisy(~button_down), .clean(FSM_reset));
 
-	/*
-	wire [15:0] data1 ;
-	assign data_block1 = {};
+   assign reset = FSM_reset || FPGA_reset;
 
-	wire [63:0] combined;
-	assign comb = {b1 b2 b3///};
-	*/
-	wire [15:0] data_block1;
-	wire [15:0] data_block2;
-	wire [15:0] data_block3;
-	wire [15:0] data_block4;
-	wire [63:0] data_combined;
+   /////////////////////////
+   // DEBOUNCING BUTTONS
+   ////////////////////////
+   
+   wire reprogram;
+   debounce d_reprogram(.reset(reset), .clock(clock27mHz), .noisy(~button_enter), .clean(reprogram));
+   wire passenger_door;
+   debounce d_passenger_door(.reset(reset), .clock(clock27mHz), .noisy(~button3), .clean(passenger_door));
+   wire driver_door;
+   debounce d_driver_door(.reset(reset), .clock(clock27mHz), .noisy(~button2), .clean(driver_door));
+   wire break_pedal;
+   debounce d_brake_pedal(.reset(reset), .clock(clock27mHz), .noisy(~button1), .clean(brake_pedal));
+   wire hiden;
+   debounce d_hidden(.reset(reset), .clock(clock27mHz), .noisy(~button0), .clean(hidden));
+   
+   ///////////////////////
+   // DEBOUNCING SWITCHES
+   ///////////////////////
+   wire ignition;
+   debounce d_ignition(.reset(reset), .clock(clock27mHz), .noisy(switch[7]), .clean(ignition));
+   wire [3:0] time_value;
+   debounce d_time_value_0(.reset(reset), .clock(clock27mHz), .noisy(switch[0]), .clean(time_value[0]));
+   debounce d_time_value_1(.reset(reset), .clock(clock27mHz), .noisy(switch[1]), .clean(time_value[1]));
+   debounce d_time_value_2(.reset(reset), .clock(clock27mHz), .noisy(switch[2]), .clean(time_value[2]));
+   debounce d_time_value_3(.reset(reset), .clock(clock27mHz), .noisy(switch[3]), .clean(time_value[3]));
+   wire [1:0] time_parameter;
+   debounce d_time_parameter_0(.reset(reset), .clock(clock27mHz), .noisy(switch[4]), .clean(time_parameter[0]));
+   debounce d_time_parameter_1(.reset(reset), .clock(clock27mHz), .noisy(switch[5]), .clean(time_parameter[1]));
+   
+   ///////////////////////////
+   //// LEDs & Display
+   ///////////////////////////   
+   wire fuel_pump;
+   FuelPump fuelpumpmodule(.clock(clock_27mhz), .passengerdoor(passenger_door), .driverdoor(driver_door, .brakepedal(brake_pedal), .fuelpump(fuel_pump)), 
+   assign led[1] = ~fuelpump;
 
-/*	
-	assign data_block1 = {4'hA, 4'b0000, 4'b0000, 4'b0000}; //state
-	assign data_block2 = {4'hC, 4'b0000, 4'b0000, 4'b0000};
-	assign data_block3 = {4'hD, 4'b0000, 4'b0000, 4'b0000};
-	assign data_block4 = {4'hF, 4'b0000, 4'b0000, 4'b0000};
-	assign data_combined = {data_block1, data_block2, data_block3, data_block4};
-*/
-	
-	assign data_combined = passenger_door;
-	
-	//[DATA: 63:0]
-	display_16hex display_16hex_initialized(.reset(reset),
-	.clock_27mhz(clock_27mhz), .data(data_combined),
-		.disp_blank(disp_blank), .disp_clock(disp_clock),
-		.disp_rs(disp_rs), .disp_ce_b(disp_ce_b),
-		.disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out));
-		
+   //LED Display
+   wire disp_blank_copy, disp_clock_copy, disp_rs_copy, disp_ce_b_copy, disp_reset_b_copy, disp_data_out_copy;
+
+   wire [63:0] data_combined;
+   assign data[1:0] = state_copy;
+   assign data[3:2] = 2'b000;
+   assign data[4] = start_timer;
+   assign data[5:7] = 3'b000;
+   assign data[8] = timer_expired;
+   assign data[15:9] = 7'b000_0000;
+   assign data [19:16] = count;
+   assign data [31:20] = 12'h000;
+   assign data [35:32] = switch[3:0];
+   assign data [47:36] =  12'h000;
+   assign data [49:48] = switch[5:4];
+   assign data [51:50] = 2'b00;
+   assign data [63:52] = 12'h000;
+
+   display_16hex display(.reset(reset), .clock_27mhz(clock_27mhz), .data(data_combined), .disp_blank(disp_blank_copy), .disp_clock(disp_clock_copy), .disp_rs(disp_rs_copy), .disp_ce_b(disp_ce_b_copy), .disp_reset_b(disp_reset_b_copy), .disp_data_out(disp_data_out_copy));
+
+   assign disp_blank = disp_blank_copy;
+   assign disp_clock = disp_clock_copy;
+   assign disp_rs = disp_rs_copy;
+   assign disp_ce_b = disp_ce_b_copy;
+   assign disp_reset_b = disp_reset_b_copy;
+   assign disp_data_out = disp_data_out_copy;
+
+   ////////////////////////////
+   //// Initialize FSM
+   ////////////////////////////
+   FSM fsm(.clock(clock_27mhz), .passengerdoor(passenger_door), .driverdoor(driver_door), .ignition(ignition), .hidden(hidden), .brakepedal(brake_pedal), .timer_status(timer_status), .reset(FSM_reset), .state(state_copy));
+   Divider divider(.clock(clock_27mhz), .start_timer(start_timer), .one_hz_enable(one_hz_enable)); 
+
+   /////////////////////////////////////
+   ///// Initialize Timer and Divider
+   /////////////////////////////////////
+   Timer timer(.Start_Timer(start_timer), .Timer_Length(Timer_Length), .one_hz_enable(one_hz_enable), .Expired(expired), .Timer_Length_Copy(timer_copy));
+
+   divider divider(.ignition(ignition), .hidden(hidden), .brakepedal(brakepedal),
+   .timer_status(timer_status), .fuelpump(fuel_pump), .status(status), .siren(siren));
+   //check the divder
+      
+   /////////END//////////////////////
+
 endmodule
