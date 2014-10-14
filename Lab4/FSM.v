@@ -1,34 +1,62 @@
 `timescale 1ns / 1ps
 
+//FIX THE FSM///
+
+
+
 module FSM(
-	 input clock,
+	input reset,
+	input clock,
     input passengerdoor,
     input driverdoor,
     input ignition,
-    input hidden,
-    input brakepedal,
-	 input timer_status,
-	 input reset,
-	 output reg [3:0]state
+    input timer_expired,
+	output reg [1:0]timer_interval,
+	output reg [3:0]state,
+	output reg siren,
+	output reg start_timer
     );
 	 
-	 //List of States
+	 ////List of States////
 	 parameter armed = 0;
 	 parameter wait1 = 1; //t_arm_delay
 	 parameter siren_state = 2;
 	 parameter disarm = 3;
 	 parameter timer = 4;
 	 parameter timer_expired = 5;
-    parameter unknown = 6;
+     parameter unknown = 6;
 	 
-	 wire [5:0]command = {passengerdoor, driverdoor, ignition, hidden, brakepedal, timer_status};
+	 ////Timer Interval Parameters ////
+    parameter [1:0] T_ALARM_ON = 2'b11;
+    parameter [1:0] T_PASSENGER_DELAY = 2'b10;
+    parameter [1:0] T_DRIVER_DELAY = 2'b01;
+    parameter [1:0] T_ARM_DELAY = 2'b00;
+
+
+	 //we need to offset driver and passenger to take into account the previous values for these like we did 
+	 reg offset_driverdoor;
+	 reg offset_passengerdoor;
 
 	 initial begin
-	 	state = timer; //TODO: SHOULD BE ARMED
+	 	state = armed;
+	 	siren = 0;
+	 	start_timer = 0;
+	 	timer_interval = 4;
+	 	//internal variables//
+	 	offset_driver_door = 0;
+	 	offset_passenger_door = 0;
 	 end
+
+
+
+
+
+	 wire [5:0]command = {passengerdoor, driverdoor, ignition, hidden, brakepedal, timer_status};
 	 
 	 always @ (posedge clock) begin  
-	   $display(command);
+	   offset_passengerdoor <= passengerdoor;
+	   offset_driverdoor <= driverdoor;
+
 		casex (command) 
 			'bxx1xxx:  begin
 				$display("case1");

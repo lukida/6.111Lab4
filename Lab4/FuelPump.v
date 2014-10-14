@@ -2,16 +2,12 @@
 
 module FuelPump(
     input clock,
-    input passengerdoor,
-    input driverdoor,
+    input reset,
     input ignition,
     input hidden,
     input brakepedal,
-	 input timer_status,
     output reg fuelpump,
-    output status,
-    output siren
-	 );
+	);
 	 
 	 parameter ignition_off = 0;
 	 parameter ignition_on = 1;
@@ -20,7 +16,8 @@ module FuelPump(
 	 reg [1:0] fuelpump_state;
 	 
 	 initial begin
-	 fuelpump_state = 0;
+		fuelpump_state = 0;
+	 	fuelpump = 0;
 	 end
 	 
 	 always @(*) begin
