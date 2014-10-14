@@ -1,2 +1,7 @@
+verilog work "Timer.v"
+verilog work "FuelPump.v"
+verilog work "FSM.v"
+verilog work "Divider.v"
+verilog work "../display_16hex.v"
 verilog work "../debounce.v"
 verilog work "../labkit.v"

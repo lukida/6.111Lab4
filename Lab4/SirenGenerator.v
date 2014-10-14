@@ -5,17 +5,23 @@ module SirenGenerator(
 	output siren_noise;
     );
 
-	parameter 400hz = 1/400;
-	parameter 700hz = 1/700;
+	reg low_tone;
+	reg high_tone;
+	reg[20:0]low_tone_counter;
+	reg[20:0]high_tone_counter;
 	
-	reg siren_noise = 400hz;
+	parameter LOW_TONE = 400;
+	parameter HIGH_TONE = 700;
 	
-	initial begin 
-		siren_noise = 0;
+	initial begin
+		low_tone = LOW_TONE;
+		high_tone = HIGH_TONE;
+		low_tone_counter = 0;
+		high_tone_counter = 0;
 	end
 	
-	always begin
-		#5 siren_noise = ~siren_noise;
+	always @(posedge clock) begin
+		//STUFFFFFFF
 	end
-
+	
 endmodule

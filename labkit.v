@@ -319,61 +319,91 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
   // and the FPGA's internal clocks begin toggling.
   //
   ////////////////////////////////////////////////////////////////////////////
-  wire reset;
-  SRL16 reset_sr(.D(1'b0), .CLK(clock_27mhz), .Q(reset),
-	         .A0(1'b1), .A1(1'b1), .A2(1'b1), .A3(1'b1));
-  defparam reset_sr.INIT = 16'hFFFF;
-  
-  //declare wires as shown in Figure 2 to connect the submodules:
-	wire reset_sync;    
-	wire one_hz_enable;
-	wire [3:0] value;
-	wire expired, start_timer; 
-	
-	//My Lab 4 Switch Mapping
-	//Debouncing
-	wire button_down_clean;
-	wire FSM_reset = button_down_clean;
-	debounce debouncer1(.reset(reset), .clock(clock27mHz), .noisy(button_down), .clean(button_down_clean));
-	wire button_enter_clean;
-	wire reprogram = button_enter_clean;
-	debounce debouncer1(.reset(reset), .clock(clock27mHz), .noisy(button_enter), .clean(button_enter_clean));
-	wire button3_clean;
-	wire passenger_door = button3_clean;
-	debounce debouncer2(.reset(reset), .clock(clock27mHz), .noisy(button3), .clean(button3_clean));
-	wire button2_clean;
-	wire driver_door = button2_clean;
-	debounce debouncer3(.reset(reset), .clock(clock27mHz), .noisy(button2), .clean(button2_clean));
-	wire button1_clean;
-	wire brake_pedal = button1_clean;
-	debounce debouncer4(.reset(reset), .clock(clock27mHz), .noisy(button1), .clean(button1_clean));
-	wire button0_clean;
-	wire hidden = button0_clean;
-	debounce debouncer5(.reset(reset), .clock(clock27mHz), .noisy(button0), .clean(button0_clean));
-	
-   wire led = {'b000000, 'b0, 'b1}; //replace this with status
-	
-	wire ignition = switch[7];
-	wire TIME_PARAM = switch[5:4]; //make sure this is the right variable name
-	wire TIME_VALUE = switch[3:0]; //make sure this is the right variable name
-	
-	//instantiate the submodules and wire their inputs and outputs
-	//(use the labkit's clock_27mhz as the clock to all blocks)	
-	
-	FSM(.clock(clock_27mhz), .passengerdoor(passenger_door), .driverdoor(driver_door), .ignition(ignition), .hidden(hidden), .brakepedal(brake_pedal), .timer_status(timer_status), .reset(FSM_reset));
-	//need to initialize timer_status (whether expired or not) in here
 
-	Divider(.clock(clock_27mhz), .start_timer(start_timer), .one_hz_enable(one_hz_enable));
-	
-	Timer(.Start_Timer(start_timer), .Timer_Length(Timer_Length), .one_hz_enable(one_hz_enable), .Expired(expired));
-	
-	FuelPump(.clock(clock_27mhz), .passengerdoor(passenger_door), .driverdoor(driver_door),
-	.ignition(ignition), .hidden(hidden), .brakepedal(brake_pedal), 
-	.timer_status(timer_status), .reset(FSM_reset));
-	
-	display_16hex(.reset(FSM_reset), .clock_27mhz(clock_27mhz), .data(),
-		disp_blank(disp_blank), disp_clock(disp_clock), disp_rs(disp_rs), disp_ce_b(disp_ce_b),
-		disp_reset_b(disp_reset_b), disp_data_out(disp_data_out));
+
+	/////////////////////////
+	///// LAB 4
+	///////////////////////
+
+	wire reset;
+	SRL16 reset_sr(.D(1'b0), .CLK(clock_27mhz), .Q(reset),
+					.A0(1'b1), .A1(1'b1), .A2(1'b1), .A3(1'b1));
+	defparam reset_sr.INIT = 16'hFFFF;
 		
 
+	/////////////////////////
+	// DEBOUNCING BUTTONS
+	////////////////////////
+	wire FSM_reset;
+	debounce d_FSM_reset(.reset(reset), .clock(clock27mHz), .noisy(~button_down), .clean(FSM_reset));
+	
+	wire reprogram;
+	debounce d_reprogram(.reset(reset), .clock(clock27mHz), .noisy(~button_enter), .clean(reprogram));
+	wire passenger_door;
+	debounce d_passenger_door(.reset(reset), .clock(clock27mHz), .noisy(~button3), .clean(passenger_door));
+	wire driver_door;
+	debounce d_driver_door(.reset(reset), .clock(clock27mHz), .noisy(~button2), .clean(driver_door));
+	wire break_pedal;
+	debounce d_brake_pedal(.reset(reset), .clock(clock27mHz), .noisy(~button1), .clean(brake_pedal));
+	wire hiden;
+	debounce d_hidden(.reset(reset), .clock(clock27mHz), .noisy(~button0), .clean(hidden));
+	
+	///////////////////////
+	// DEBOUNCING SWITCHES
+	///////////////////////
+	wire ignition;
+	debounce d_ignition(.reset(reset), .clock(clock27mHz), .noisy(switch[7]), .clean(ignition));
+	wire [3:0] time_value;
+	debounce d_time_value_0(.reset(reset), .clock(clock27mHz), .noisy(switch[0]), .clean(time_value[0]));
+	debounce d_time_value_1(.reset(reset), .clock(clock27mHz), .noisy(switch[1]), .clean(time_value[1]));
+	debounce d_time_value_2(.reset(reset), .clock(clock27mHz), .noisy(switch[2]), .clean(time_value[2]));
+	debounce d_time_value_3(.reset(reset), .clock(clock27mHz), .noisy(switch[3]), .clean(time_value[3]));
+	wire [1:0] time_parameter;
+	debounce d_time_parameter_0(.reset(reset), .clock(clock27mHz), .noisy(switch[4]), .clean(time_parameter[0]));
+	debounce d_time_parameter_1(.reset(reset), .clock(clock27mHz), .noisy(switch[5]), .clean(time_parameter[1]));
+		
+	wire led = {FSM_reset, reprogram, passenger_door, driver_door, brake_pedal, hidden}; //replace this with status
+
+	wire [3:0] state_copy;
+	wire [3:0] timer_copy;
+	
+	FSM fsm(.clock(clock_27mhz), .passengerdoor(passenger_door), .driverdoor(driver_door), .ignition(ignition), .hidden(hidden), .brakepedal(brake_pedal), .timer_status(timer_status), .reset(FSM_reset), .state(state_copy));
+	Divider divider(.clock(clock_27mhz), .start_timer(start_timer), .one_hz_enable(one_hz_enable));	
+	Timer timer(.Start_Timer(start_timer), .Timer_Length(Timer_Length), .one_hz_enable(one_hz_enable), .Expired(expired), .Timer_Length_Copy(timer_copy));
+	FuelPump fuelpump(.clock(clock_27mhz), .passengerdoor(passenger_door), .driverdoor(driver_door), 
+	.ignition(ignition), .hidden(hidden), .brakepedal(brakepedal),
+	.timer_status(timer_status), .fuelpump(fuel_pump), .status(status), .siren(siren));
+	
+	//{4'hA,1'b0,state,4'hB, 4'b0, 4'hC, 1'b0, Timer_Length_Copy, 4'hD, 4'b0};
+
+	/*
+	wire [15:0] data1 ;
+	assign data_block1 = {};
+
+	wire [63:0] combined;
+	assign comb = {b1 b2 b3///};
+	*/
+	wire [15:0] data_block1;
+	wire [15:0] data_block2;
+	wire [15:0] data_block3;
+	wire [15:0] data_block4;
+	wire [63:0] data_combined;
+
+/*	
+	assign data_block1 = {4'hA, 4'b0000, 4'b0000, 4'b0000}; //state
+	assign data_block2 = {4'hC, 4'b0000, 4'b0000, 4'b0000};
+	assign data_block3 = {4'hD, 4'b0000, 4'b0000, 4'b0000};
+	assign data_block4 = {4'hF, 4'b0000, 4'b0000, 4'b0000};
+	assign data_combined = {data_block1, data_block2, data_block3, data_block4};
+*/
+	
+	assign data_combined = passenger_door;
+	
+	//[DATA: 63:0]
+	display_16hex display_16hex_initialized(.reset(reset),
+	.clock_27mhz(clock_27mhz), .data(data_combined),
+		.disp_blank(disp_blank), .disp_clock(disp_clock),
+		.disp_rs(disp_rs), .disp_ce_b(disp_ce_b),
+		.disp_reset_b(disp_reset_b), .disp_data_out(disp_data_out));
+		
 endmodule

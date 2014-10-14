@@ -24,13 +24,13 @@ module FuelPump(
 	 end
 	 
 	 always @(*) begin
-		case (ignition) begin
-		0: fuelpump_state = ignition_off;
-		1: fuelpump_state = ignition_on;
-		end
+		case (ignition) 
+			0: fuelpump_state = ignition_off;
+			1: fuelpump_state = ignition_on;
+		endcase
 		
 		if (hidden == 1 && brakepedal == 1 && fuelpump_state == ignition_on) begin
-		fuelpump_state = power_on; 
+			fuelpump_state = power_on; 
 		end
 		
 		//output conditions

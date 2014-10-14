@@ -8,8 +8,8 @@ module FSM(
     input hidden,
     input brakepedal,
 	 input timer_status,
-	 input reset
-	 //output reg [3:0]state
+	 input reset,
+	 output reg [3:0]state
     );
 	 
 	 //List of States
@@ -23,10 +23,8 @@ module FSM(
 	 
 	 wire [5:0]command = {passengerdoor, driverdoor, ignition, hidden, brakepedal, timer_status};
 
-	 reg [3:0]state;
-
 	 initial begin
-	 	state = armed;
+	 	state = timer; //TODO: SHOULD BE ARMED
 	 end
 	 
 	 always @ (posedge clock) begin  
@@ -39,7 +37,6 @@ module FSM(
 			'bxx0xxx: begin
 				$display("case2");
 				case(state) 
-					armed: $display("armed and in case2");
 					disarm: state <= wait1; //with driver time wait
 				endcase
 			end
@@ -63,17 +60,11 @@ module FSM(
 				endcase				
 			end 
 			default: begin
-			$display("main case statement");
-			state <= unknown;
+				$display("main case statement");
+				state <= unknown;
 			end
 		endcase
 	 end
-	 
-	 always @(*) begin
-		if (reset == 1) begin
-			state = armed;
-		end
-	 end
-	 
+
 endmodule
 	
