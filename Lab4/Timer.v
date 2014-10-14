@@ -1,56 +1,43 @@
 `timescale 1ns / 1ps
 module Timer(
 	input reset,
-	input reprogram, 
-    input [1:0] choose_timer,
-    input [3:0] timer_length,
-    input [1:0] timer_interval,
-	output reg [3:0] countdown
+	input clock,
+	input one_hz_enable,
+	input start_timer,
+	input [3:0] timer_values, 
+	output reg timer_expired,
+	output reg [3:0] timer_length,
     );
-	
-	//making all the regs to hold the changing times
-	reg [3:0] t_alarm_on;
-	reg [3:0] t_passenger_delay;
-	reg [3:0] t_driver_delay;
-	reg [3:0] t_arm_delay;
 
-	//making parameters
-    parameter [1:0] T_ALARM_ON = 2'b11;
-    parameter [1:0] T_PASSENGER_DELAY = 2'b10;
-    parameter [1:0] T_DRIVER_DELAY = 2'b01;
-    parameter [1:0] T_ARM_DELAY = 2'b00;
-	
-	initial begin
-		t_alarm_on = 4'b1010;
-		t_passenger_delay = 4'b1111;
-		t_driver_delay = 4'b1000;
-		t_arm_delay = 4'b0110;
-	end
-	
-	always @(*) begin
-		if (reprogram) begin //user input
-			case (choose_timer)
-				T_ALARM_ON: t_alarm_on = timer_length;
-   				T_PASSENGER_DELAY: t_passenger_delay = timer_length;
-   				T_DRIVER_DELAY: t_driver_delay = timer_length;
-   				T_ARM_DELAY: t_arm_delay = timer_length;
-			endcase
-		end
-		else if (reset) begin
-			t_alarm_on = 4'b1010;
-			t_passenger_delay = 4'b1111;
-			t_driver_delay = 4'b1000;
-			t_arm_delay = 4'b0110;
-		end
-		else begin
-			case (timer_interval) 
-				T_ALARM_ON: countdown = t_alarm_on;
-   				T_PASSENGER_DELAY: countdown = t_passenger_delay;
-   				T_DRIVER_DELAY: countdown = t_driver_delay;
-   				T_ARM_DELAY: countdown = t_arm_delay;
-			endcase
-		end
-	end
-	
+    reg[3:0] offset_timer_length; 
+    //since the timer needs to be synchronous, we need to store the previous value of the timer length to make it work out timing-wise 
 
+    initial begin
+    	timer_expired = 0;
+    	timer_length = 0;
+    	offset_timer_legnth = 0;
+    end
+
+    //THIS HAS TO BE SYNCHRONOUS
+    always @(posedge clock) begin
+    	offset_timer_length <= timer_length;
+    	//store the timer length
+
+    	if (reset) begin
+    		timer_expired <= 0;
+    		timer_length <= 0;
+    	end
+    	else if (timer_expired == 1) begin
+    		timer_expired <= 0;
+    	end
+    	else if (start_timer == 1) begin
+    		timer_length <= timer_values;
+    	end
+    	else if (one_hz_enable == 1 && timer_length >0) begin
+    		timer_length <= timer_length - 1;
+    	end
+    	else if (timer == 0 && ~offset_timer_length == 0) begin
+    		timer_expired == 1;
+    	end
+    end
 endmodule

@@ -2,7 +2,7 @@
 
 module Divider(
 	input clock,
-	input start_timer,
+	input reset,
 	output reg one_hz_enable
     );
 
@@ -10,24 +10,21 @@ module Divider(
 	
 	initial begin
 		clock_counter = 0;
+		one_hz_enable = 0;
 	end
 	
 	
 	always @(posedge clock) begin
-		clock_counter <= clock_counter + 1;
-	end
-	
-	always @(*) begin
-	
-		if (start_timer == 1) begin
-			clock_counter = 0;
+		if (reset) begin
+			clock_counter <= 0;
+			one_hz_enable <= 0;
 		end
-		
-		if (clock_counter == 27000000) begin
-			one_hz_enable = 1;
-			clock_counter = 0;
+		else if (clock_counter = 27000000) begin
+			clock_counter <= 0;
+			one_hz_enable <= 1;
 		end
-	
+		else 
+			clock_counter <= clock_counter + 1;
+			one_hz_enable <= 0;
 	end
-
 endmodule

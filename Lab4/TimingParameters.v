@@ -1,41 +1,54 @@
 `timescale 1ns / 1ps
 module TimingParameters(
-	 input clock,
-    input passengerdoor,
-    input driverdoor,
-    input ignition,
-    input hidden,
-    input brakepedal,
-	 input timer_status,
-    output fuelpump,
-    output status,
-    output siren,
-	 output state
-	 );
+	input reset,
+	input reprogram, 
+    input [1:0] choose_timer,
+    input [3:0] timer_length,
+    input [1:0] timer_interval,
+	output reg [3:0] countdown
+    );
+	
+	//making all the regs to hold the changing times
+	reg [3:0] t_alarm_on;
+	reg [3:0] t_passenger_delay;
+	reg [3:0] t_driver_delay;
+	reg [3:0] t_arm_delay;
 
-	reg [1:0] memory;
-	reg reset;
+	//making parameters
+    parameter [1:0] T_ALARM_ON = 2'b11;
+    parameter [1:0] T_PASSENGER_DELAY = 2'b10;
+    parameter [1:0] T_DRIVER_DELAY = 2'b01;
+    parameter [1:0] T_ARM_DELAY = 2'b00;
 	
 	initial begin
-	memory = 'b1111;
+		t_alarm_on = 4'b1010;
+		t_passenger_delay = 4'b1111;
+		t_driver_delay = 4'b1000;
+		t_arm_delay = 4'b0110;
 	end
 	
-	parameter arming_delay = 0;
-	parameter countdown_driver_door = 1;
-	parameter countdown_passenger_door = 2;
-	parameter siren_on_time = 3;
-	
-	//TODO: wire the switches
 	always @(*) begin
-		//choose which value to set to memory
-		case (Time_Parameter_Selector) begin
-		arming_delay: T_ARM_DELAY = memory;
-		countdown_driver_door: T_DRIVER_DELAY = memory;
-		countdown_passenger_door: T_PASSENGER_DELAY = memory;
-		siren_on_time: T_ALARM_ON = memory;
-		endcase
-		memory = Time_Value;
-		//reset is in the FSM
+		if (reprogram) begin //user input
+			case (choose_timer)
+				T_ALARM_ON: t_alarm_on = timer_length;
+   				T_PASSENGER_DELAY: t_passenger_delay = timer_length;
+   				T_DRIVER_DELAY: t_driver_delay = timer_length;
+   				T_ARM_DELAY: t_arm_delay = timer_length;
+			endcase
+		end
+		else if (reset) begin
+			t_alarm_on = 4'b1010;
+			t_passenger_delay = 4'b1111;
+			t_driver_delay = 4'b1000;
+			t_arm_delay = 4'b0110;
+		end
+		else begin
+			case (timer_interval) 
+				T_ALARM_ON: countdown = t_alarm_on;
+   				T_PASSENGER_DELAY: countdown = t_passenger_delay;
+   				T_DRIVER_DELAY: countdown = t_driver_delay;
+   				T_ARM_DELAY: countdown = t_arm_delay;
+			endcase
+		end
 	end
-
 endmodule
